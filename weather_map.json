@@ -1,0 +1,92 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1000,
+    "height": 600,
+    "title": {
+        "text": "Average Rainfall in Major Australian Cities (mm)",
+        "anchor": "start"
+    },
+    "data": {
+      "url": "data/ne_10m_admin_0_countries.json",
+      "format": {
+        "type": "json"
+      }
+    },
+    "projection": {
+      "type": "mercator",
+      "scale": 850,
+      "center": [133, -28]
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "geoshape",
+          "fill": "#ddd",
+          "stroke": "white"
+        }
+      },
+      {
+        "data": {
+          "url": "data/Major_Australian_Cities_Weather_Data.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "transform": [
+          {
+            "aggregate": [{"op": "mean", "field": "Rainfall", "as": "AvgRainfall"}],
+            "groupby": ["Location", "Longitude", "Latitude"]
+          }
+        ],
+        "mark": "circle",
+        "encoding": {
+          "longitude": {"field": "Longitude", "type": "quantitative"},
+          "latitude": {"field": "Latitude", "type": "quantitative"},
+          "size": {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "title": "Average Rainfall (mm)",
+            "legend": {
+                "orient": "bottom-right", 
+                "titleFontSize": 12,
+                "labelFontSize": 10,
+                "symbolSize": 50  
+          }
+          },
+          "color": {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "scale": {
+                "scheme": "blues",
+                "domain": [0, 5]
+            },
+            "title": "Average Rainfall (mm)",
+            "legend": {
+                "orient": "top-right",  
+                "titleFontSize": 12,
+                "labelFontSize": 10
+              }
+          },
+        "tooltip": [
+            {"field": "Location", "type": "nominal", "title": "City"},
+            {"field": "AvgRainfall", "type": "quantitative", "title": "Rainfall (mm)", "format": ".2f"}
+        ]
+
+        }
+      },
+      {
+        "data": {
+            "graticule": true
+        },
+        "mark": {
+            "type": "geoshape",
+            "stroke": "#c3c3c3",  
+            "strokeWidth": 0.7 ,
+            "opacity": 0.7
+        }
+      }
+
+      
+    ]
+  }
+  
