@@ -3,8 +3,12 @@
     "width": 1000,
     "height": 600,
     "title": {
-        "text": "Average Rainfall in Major Australian Cities (mm)",
-        "anchor": "start"
+      "text": "Average Rainfall in Major Australian Cities (mm)",
+      "anchor": "middle",  
+      "fontSize": 25,      
+      "align": "center",   
+      "fontWeight": "bold" ,
+      "font": "Arial, sans-serif" 
     },
     "data": {
       "url": "data/ne_10m_admin_0_countries.json",
