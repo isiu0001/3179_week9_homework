@@ -12,13 +12,13 @@
     },
     "projection": {
       "type": "albers",
-      "scale": 1000,
+      "scale": 900,
       "rotate": [-135, 3.5], 
       "center": [0, -24.1339185], 
       "parallels": [-43.0331597, -5.2346774]
     },
     "data": {
-      "url": "data/ne_10m_admin_0_countries.json",
+      "url": "data/STE_2021_AUST_GDA2020.json",
       "format": {
         "type": "json"
       }
