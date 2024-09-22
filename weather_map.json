@@ -3,23 +3,25 @@
     "width": 1000,
     "height": 600,
     "title": {
-      "text": "Average Rainfall in Major Australian Cities (mm)",
+      "text": "Average Rainfall in Major Australian Cities From 2008 - 2017 (mm)",
       "anchor": "middle",  
-      "fontSize": 25,      
+      "fontSize": 30,      
       "align": "center",   
       "fontWeight": "bold" ,
       "font": "Arial, sans-serif" 
+    },
+    "projection": {
+      "type": "albers",
+      "scale": 1000,
+      "rotate": [-135, 3.5], 
+      "center": [0, -24.1339185], 
+      "parallels": [-43.0331597, -5.2346774]
     },
     "data": {
       "url": "data/ne_10m_admin_0_countries.json",
       "format": {
         "type": "json"
       }
-    },
-    "projection": {
-      "type": "mercator",
-      "scale": 850,
-      "center": [133, -28]
     },
     "layer": [
       {
@@ -50,6 +52,9 @@
             "field": "AvgRainfall",
             "type": "quantitative",
             "title": "Average Rainfall (mm)",
+            "scale": {
+               "range": [100, 1000]  
+            },
             "legend": {
                 "orient": "bottom-right", 
                 "titleFontSize": 12,
@@ -71,11 +76,21 @@
                 "labelFontSize": 10
               }
           },
-        "tooltip": [
-            {"field": "Location", "type": "nominal", "title": "City"},
+     
+          "tooltip": [
+            {"field": "Location", "type": "nominal", "title": "City"},  
             {"field": "AvgRainfall", "type": "quantitative", "title": "Rainfall (mm)", "format": ".2f"}
-        ]
+          ]
 
+        },
+
+        "selection": {
+          "tooltip": {
+            "type": "single",
+            "on": "mouseover",
+            "encodings": ["longitude", "latitude"],
+            "nearest": false
+          }
         }
       },
       {
