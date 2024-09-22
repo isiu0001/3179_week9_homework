@@ -4,7 +4,7 @@
   "height": 700,
   "projection": {
     "type": "albers",
-    "scale": 950,
+    "scale": 1100,
     "rotate": [-135, 3.5], 
     "center": [0, -24.1339185], 
     "parallels": [-43.0331597, -5.2346774]
@@ -19,7 +19,7 @@
     {
       "mark": {
         "type": "geoshape",
-        "fill": "#ddd",
+        "fill": "#d1d1d1",
         "stroke": "white"
       }
     },
@@ -62,7 +62,7 @@
               "type": "quantitative",
               "scale": {
                   "scheme": "blues",
-                  "domain": [0, 5]
+                  "domain": [0,1,2,3,4,5]
               },
               "title": "Average Rainfall (mm)",
               "legend": {
